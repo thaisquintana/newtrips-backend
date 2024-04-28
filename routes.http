@@ -1,4 +1,4 @@
-POST http://localhost:3333/videos
+POST https://newtrips.onrender.com/videos
 Content-Type: application/json
 
 {
@@ -9,10 +9,10 @@ Content-Type: application/json
 
 ### 
 
-GET http://localhost:3333/videos?search=0
+GET https://newtrips.onrender.com/videos?search=0
 
 ###
-PUT http://localhost:3333/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
+PUT https://newtrips.onrender.com/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
 Content-Type: application/json
 
 {
@@ -23,4 +23,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3333/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
+DELETE https://newtrips.onrender.com/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
