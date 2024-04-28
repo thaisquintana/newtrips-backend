@@ -7,40 +7,45 @@ const server = fastify()
 // const database = new DatabaseMemory()
 const database = new DadabasePostgres
 
-server.post('/videos', async (request, reply) => {
-    const {title, description, duration} = request.body
+server.post('/register-new-user', async (request, reply) => {
+    const {name, email, cpf, address, cep, state, city, password, selected_plan} = request.body
     await database.create({
-        title,
-        description,
-        duration,
+        name,
+        email,
+        cpf,
+        address,
+        cep,
+        state,
+        city,
+        password,
+        selected_plan
+
     })
 
     return reply.status(201).send()
 })
 
-server.get('/videos', async (request) => {
+server.get('/users', async (request) => {
     const search = request.query.search
-    const videos = await database.list(search)
+    const users = await database.list(search)
 
-    return videos
+    return users
 })
 
-server.put('/videos/:id', async (request, reply) => {
-    const videoId = request.params.id
-    const {title, description, duration} = request.body
-    await database.update(videoId, {
-        title,
-        description,
-        duration,
+server.put('/users/:id', async (request, reply) => {
+    const userId = request.params.id
+    const {name, email, cpf, address, cep, state, city, password, selected_plan} = request.body
+    await database.update(userId, {
+        name, email, cpf, address, cep, state, city, password, selected_plan
     })
 
     return reply.status(204).send()
 })
 
-server.delete('/videos/:id', async (request, reply) => {
-    const videoId = request.params.id
+server.delete('/users/:id', async (request, reply) => {
+    const userId = request.params.id
 
-   await database.delete(videoId)
+   await database.delete(userId)
 
    return reply.status(204).send()
 })

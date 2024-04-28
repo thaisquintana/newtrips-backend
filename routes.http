@@ -1,26 +1,44 @@
-POST https://newtrips.onrender.com/videos
+POST https://newtrips.onrender.com/register-new-user
 Content-Type: application/json
 
 {
-    "title": "Vídeo node",
-    "description": "Esse é o primeiro vídeo",
-    "duration": 180
+        "name": "Roberval Gonçalves",
+        "email": "rb_goncalves@hotmail.com",
+        "cpf": "018.671.230-88",
+        "address":"Rua Ormando de Aguiar 1, Fradinhos",
+        "cep":"29042-296",
+        "state": "Espírito Santo",
+        "city": "Vitória",
+        "password": "123456",
+        "selected_plan":{
+            "id": 1,
+            "plan": "Sky"
+        }
 }
 
 ### 
 
-GET https://newtrips.onrender.com/videos?search=0
+GET https://newtrips.onrender.com/users?search=0
 
 ###
-PUT https://newtrips.onrender.com/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
+PUT https://newtrips.onrender.com/users/8221bf9c-5528-4063-b6e9-7bb988425f0a
 Content-Type: application/json
 
 {
-    "title": "Vídeo 02",
-    "description": "Esse é o primeiro vídeo",
-    "duration": 180
+     "name": "Roberval Gonçalves",
+        "email": "rb_goncalves@hotmail.com",
+        "cpf": "018.671.230-88",
+        "address":"Rua Ormando de Aguiar 1, Fradinhos",
+        "cep":"29042-300",
+        "state": "Espírito Santo",
+        "city": "Vitória",
+        "password": "123456",
+        "selected_plan":{
+            "id": 1,
+            "plan": "Sky"
+        }
 }
 
 ###
 
-DELETE https://newtrips.onrender.com/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
+DELETE https://newtrips.onrender.com/users/8221bf9c-5528-4063-b6e9-7bb988425f0a
