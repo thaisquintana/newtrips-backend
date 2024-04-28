@@ -17,8 +17,7 @@ export const sql = postgres({
 });
 
 async function getPgVersion() {
-  const result = await sql`select version()`;
-  console.log(result);
+  await sql`select version()`;
 }
 
 getPgVersion();
