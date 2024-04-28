@@ -7,9 +7,14 @@ import { sql } from './db.js'
 sql`
     CREATE TABLE videos (
         id      TEXT PRIMARY KEY,
-        title   TEXT,
-        description TEXT,
-        duration    INTEGER
+        name    TEXT,
+        email   TEXT,
+        cpf     TEXT,
+        address TEXT,
+        cep     INTEGER,
+        state   TEXT,
+        city    TEXT,
+        password    TEXT,
     )
 `.then(() => {
     console.log('tabela criada')
