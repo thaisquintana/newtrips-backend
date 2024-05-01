@@ -1,11 +1,17 @@
 import { fastify } from "fastify";
 // import { DatabaseMemory } from './database-memory.js'
 import { DadabasePostgres } from "./database-postgres.js";
+import cors from 'cors';
 
 const server = fastify();
 
 // const database = new DatabaseMemory()
 const database = new DadabasePostgres();
+
+server.use((res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  next();
+});
 
 server.post("/subscriptions", async (request, reply) => {
   const { name, address, cep, state, city, cpf, email, plan, status } =
@@ -58,6 +64,7 @@ server.delete("/subscriptions/:id", async (request, reply) => {
 
   return reply.status(204).send();
 });
+
 
 server.listen({
   host: "0.0.0.0",
