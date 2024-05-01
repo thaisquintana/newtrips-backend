@@ -1,17 +1,18 @@
 import { fastify } from "fastify";
 // import { DatabaseMemory } from './database-memory.js'
 import { DadabasePostgres } from "./database-postgres.js";
-import cors from 'cors';
+import cors from '@fastify/cors'
 
 const server = fastify();
 
 // const database = new DatabaseMemory()
 const database = new DadabasePostgres();
 
-server.use((res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-  next();
-});
+await fastify.register(cors, { 
+  origin:'http://localhost:5173'
+})
+
+
 
 server.post("/subscriptions", async (request, reply) => {
   const { name, address, cep, state, city, cpf, email, plan, status } =
