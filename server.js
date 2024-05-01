@@ -8,7 +8,7 @@ const server = fastify();
 // const database = new DatabaseMemory()
 const database = new DadabasePostgres();
 
-await fastify.register(cors, { 
+await server.register(cors, { 
   origin:'http://localhost:5173'
 })
 
