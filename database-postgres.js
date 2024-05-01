@@ -3,31 +3,31 @@ import { sql } from './db.js'
 
 export class DadabasePostgres {
   async list(search) {
-   let videos
+   let subscriptions
 
    if(search) {
-    videos = await sql`select * from videos where title ilike ${'%' + search + '%'}`
+    subscriptions = await sql`select * from subscriptions where status ilike ${'%' + search + '%'}`
    } else {
-    videos = await sql`select * from videos`
+    subscriptions = await sql`select * from subscriptions`
    }
-   return videos
+   return subscriptions
   }
 
-  async create(video) {
-    const {title, description, duration} = video
-    const videoId = randomUUID();
+  async create(subscription) {
+    const {name, address, cep, state, city, cpf, email, plan, status} = subscription
+    const subscriptionId = randomUUID();
 
-    await sql`insert into videos (id, title, description, duration) VALUES(${videoId}, ${title}, ${description}, ${duration})`
+    await sql`insert into subscriptions (id, name, address, cep, state, city, cpf, email, plan, status) VALUES(${subscriptionId}, ${name}, ${address}, ${cep}, ${state}, ${city}, ${cpf}, ${email}, ${plan}, ${status})`
    
   }
 
-  async update(id, video) {
-    const {title, description, duration} = video
+  async update(id, subscription) {
+    const {name, address, cep, state, city, cpf, email, plan, status} = subscription
 
-    await sql`update videos set title = ${title}, description = ${description}, duration = ${duration} WHERE id = ${id} `
+    await sql`update subscriptions set name = ${name}, address = ${address}, cep = ${cep}, state = ${state}, city = ${city}, cpf = ${cpf}, email = ${email}, plan = ${plan}, status = ${status} WHERE id = ${id} `
   }
 
   async delete(id) {
-    await sql`delete from videos WHERE id = ${id}`
+    await sql`delete from subscriptions WHERE id = ${id}`
   }
 }

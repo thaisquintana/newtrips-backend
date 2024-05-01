@@ -1,51 +1,65 @@
-import { fastify } from 'fastify'
+import { fastify } from "fastify";
 // import { DatabaseMemory } from './database-memory.js'
-import { DadabasePostgres } from './database-postgres.js'
+import { DadabasePostgres } from "./database-postgres.js";
 
-const server = fastify()
+const server = fastify();
 
 // const database = new DatabaseMemory()
-const database = new DadabasePostgres
+const database = new DadabasePostgres();
 
-server.post('/videos', async (request, reply) => {
-    const {title, description, duration} = request.body
-    await database.create({
-        title,
-        description,
-        duration,
-    })
+server.post("/subscriptions", async (request, reply) => {
+  const { name, address, cep, state, city, cpf, email, plan, status } =
+    request.body;
+  await database.create({
+    name,
+    address,
+    cep,
+    state,
+    city,
+    cpf,
+    email,
+    plan,
+    status,
+  });
 
-    return reply.status(201).send()
-})
+  return reply.status(201).send();
+});
 
-server.get('/videos', async (request) => {
-    const search = request.query.search
-    const videos = await database.list(search)
+server.get("/subscriptions", async (request) => {
+  const search = request.query.search;
+  const subscriptions = await database.list(search);
 
-    return videos
-})
+  return subscriptions;
+});
 
-server.put('/videos/:id', async (request, reply) => {
-    const videoId = request.params.id
-    const {title, description, duration} = request.body
-    await database.update(videoId, {
-        title,
-        description,
-        duration,
-    })
+server.put("/subscriptions/:id", async (request, reply) => {
+  const subscriptionId = request.params.id;
+  const { name, address, cep, state, city, cpf, email, plan, status } =
+    request.body;
+  await database.update(subscriptionId, {
+    name,
+    address,
+    cep,
+    state,
+    city,
+    cpf,
+    email,
+    plan,
+    status,
+  });
 
-    return reply.status(204).send()
-})
+  return reply.status(204).send();
+});
 
-server.delete('/videos/:id', async (request, reply) => {
-    const videoId = request.params.id
+server.delete("/subscriptions/:id", async (request, reply) => {
+  const subscriptionId = request.params.id;
 
-   await database.delete(videoId)
+  await database.delete(subscriptionId);
 
-   return reply.status(204).send()
-})
+  return reply.status(204).send();
+});
 
 server.listen({
-    host: '0.0.0.0',
-    port: process.env.PORT ?? 3333,
-})
+  host: "0.0.0.0",
+  port: process.env.PORT ?? 3333,
+});

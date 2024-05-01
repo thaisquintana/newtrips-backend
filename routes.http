@@ -1,26 +1,40 @@
-POST https://newtrips-backend.onrender.com/videos
+POST https://newtrips-backend.onrender.com/subscriptions
 Content-Type: application/json
 
 {
-    "title": "Vídeo node",
-    "description": "Esse é o primeiro vídeo",
-    "duration": 180
+    "id": 2353768,
+    "name": "Fernanda Cruz",
+    "email": "fernanda_cruz@gmail.com",
+    "plan": "Explorer",
+    "status": "Ativo",
+    "address": "Rua Bonfim da Feira, 222 - Jardim São Paulo",
+    "state": "São Paulo",
+    "city": "São Paulo",
+   "cep": "08430-770",
+    "cpf": "869.782.800-70"
 }
 
 ### 
 
-GET https://newtrips-backend.onrender.com/videos?search=0
+GET https://newtrips-backend.onrender.com/subscriptions?search=ativo
 
 ###
-PUT https://newtrips-backend.onrender.com/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
+PUT https://newtrips-backend.onrender.com/subscriptions/5ad81cc3-e5f5-49bb-a31e-c7645173bfc3
 Content-Type: application/json
 
 {
-    "title": "Vídeo 02",
-    "description": "Esse é o primeiro vídeo",
-    "duration": 180
+     "id": 2353768,
+    "name": "Fernanda Cruz",
+    "email": "fernanda_cruz@gmail.com",
+    "plan": "Sky",
+    "status": "Ativo",
+    "address": "Rua Bonfim da Feira, 222 - Jardim São Paulo",
+    "state": "São Paulo",
+    "city": "São Paulo",
+    "cep": "08430-770",
+    "cpf": "869.782.800-70"
 }
 
 ###
 
-DELETE https://newtrips-backend.onrender.com/videos/8221bf9c-5528-4063-b6e9-7bb988425f0a
+DELETE http://localhost:3333/subscriptions/5ad81cc3-e5f5-49bb-a31e-c7645173bfc3
