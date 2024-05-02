@@ -7,7 +7,9 @@ export class DadabasePostgres {
 
    if(search) {
     subscriptions = await sql`select * from subscriptions where status ilike ${'%' + search + '%'}`
-   } else {
+   }
+
+   else {
     subscriptions = await sql`select * from subscriptions`
    }
    return subscriptions
@@ -27,6 +29,14 @@ export class DadabasePostgres {
     await sql`update subscriptions set name = ${name}, address = ${address}, cep = ${cep}, state = ${state}, city = ${city}, cpf = ${cpf}, email = ${email}, plan = ${plan}, status = ${status} WHERE id = ${id} `
   }
 
+  async subscription(id) {
+    let subscription
+
+    subscription = await sql`select * from subscriptions WHERE id = ${id}`
+
+    return subscription
+  }
+  
   async delete(id) {
     await sql`delete from subscriptions WHERE id = ${id}`
   }

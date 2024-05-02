@@ -9,7 +9,7 @@ const server = fastify();
 const database = new DadabasePostgres();
 
 await server.register(cors, { 
-  origin:'http://localhost:5173'
+  origin:['http://localhost:5173', 'http://localhost:3333']
 })
 
 
@@ -35,6 +35,14 @@ server.post("/subscriptions", async (request, reply) => {
 server.get("/subscriptions", async (request) => {
   const search = request.query.search;
   const subscriptions = await database.list(search);
+
+  return subscriptions;
+});
+
+
+server.get("/subscriptions/:id", async (request) => {
+  const subscriptionId = request.params.id;
+  const subscriptions = await database.subscription(subscriptionId);
 
   return subscriptions;
 });

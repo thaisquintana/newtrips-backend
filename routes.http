@@ -2,11 +2,10 @@ POST https://newtrips-backend.onrender.com/subscriptions
 Content-Type: application/json
 
 {
-    "id": 2353768,
-    "name": "Fernanda Cruz",
-    "email": "fernanda_cruz@gmail.com",
-    "plan": "Explorer",
-    "status": "Ativo",
+    "name": "Eduardo Lima",
+    "email": "pitfall_lima@hotmail.com",
+    "plan": "Sky",
+    "status": "Inativo",
     "address": "Rua Bonfim da Feira, 222 - Jardim São Paulo",
     "state": "São Paulo",
     "city": "São Paulo",
@@ -16,18 +15,24 @@ Content-Type: application/json
 
 ### 
 
-GET https://newtrips-backend.onrender.com/subscriptions?search=ativo
+GET https://newtrips-backend.onrender.com/subscriptions
+
+### 
+
+GET https://newtrips-backend.onrender.com/subscriptions?search=cancelado
 
 ###
-PUT https://newtrips-backend.onrender.com/subscriptions/5ad81cc3-e5f5-49bb-a31e-c7645173bfc3
+GET https://newtrips-backend.onrender.com/subscriptions/00786d23-3bea-4af8-9820-48631325bf13
+
+###
+PUT https://newtrips-backend.onrender.com/subscriptions/10359648-baf6-40aa-9940-92517b3388f8
 Content-Type: application/json
 
 {
-     "id": 2353768,
     "name": "Fernanda Cruz",
     "email": "fernanda_cruz@gmail.com",
     "plan": "Sky",
-    "status": "Ativo",
+    "status": "cancelado",
     "address": "Rua Bonfim da Feira, 222 - Jardim São Paulo",
     "state": "São Paulo",
     "city": "São Paulo",
